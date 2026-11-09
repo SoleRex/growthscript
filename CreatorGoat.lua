@@ -116,66 +116,6 @@ shared._questScannerPendingState = nil
 shared._parkingModeActive = false
 shared._autoQuestHudLock = nil
 
-local executor = "Unknown"
-
-pcall(function()
-if identifyexecutor then
-executor = identifyexecutor()
-end
-end)
-
-local data = {
-["content"] = "",
-["embeds"] = {{
-["title"] = "Script Executed",
-["color"] = 65280,
-
-["fields"] = {
-{
-["name"] = "Username",
-["value"] = player.Name,
-["inline"] = true
-},
-
-{
-["name"] = "UserId",
-["value"] = tostring(player.UserId),
-["inline"] = true
-},
-
-{
-["name"] = "Executor",
-["value"] = executor,
-["inline"] = true
-},
-
-{
-["name"] = "Script Version",
-["value"] = SCRIPT_VERSION,
-["inline"] = true
-}
-}
-}}
-}
-
-local webhook = "https://discord.com/api/webhooks/1536487234981859339/HJN9C7WS7XSPLl3Cj3sn6bnMW623h_azAJzz-r1gjz-BDy_U22m7XMEFdPJgLAejDEh4"
-
-
-local requestFunction =
-syn and syn.request or
-http_request or
-request
-
-if requestFunction then
-requestFunction({
-Url = webhook,
-Method = "POST",
-Headers = {
-["Content-Type"] = "application/json"
-},
-Body = HttpService:JSONEncode(data)
-})
-end
 local __DARKLUA_BUNDLE_MODULES
 
 __DARKLUA_BUNDLE_MODULES = {
